@@ -19,6 +19,12 @@
         <meta name="theme-color" content="#fafafa">
     </head>
     <body>
+        {% if user.is_impersonate %}
+
+        You are loged in as: {{ request.user }} <a href="{% url 'impersonate-stop' %}">Go back</a>
+
+        {% endif %}
+
         <div class="container">
             {% block body %}
             {% endblock %}

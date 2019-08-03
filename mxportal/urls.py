@@ -24,4 +24,5 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('impersonate/', include('impersonate.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
