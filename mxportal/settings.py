@@ -76,7 +76,7 @@ ROOT_URLCONF = 'mxportal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -152,8 +152,9 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
-ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_USERNAME_REQUIRED = False
 SOCIALACCOUNT_QUERY_EMAIL = True
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -190,3 +191,5 @@ SOCIAL_AUTH_FACEBOOK_SECRET = ''
 # twitter
 SOCIAL_AUTH_TWITTER_KEY = ''
 SOCIAL_AUTH_TWITTER_SECRET = ''
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
