@@ -15,3 +15,10 @@
     <li>No comments yet.</li>
     {% endfor %}
 </ul>
+
+<p>Comment:</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-sm btn-outline-dark">Submit</button>
+</form>
