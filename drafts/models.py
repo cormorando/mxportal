@@ -2,9 +2,9 @@ from datetime import datetime
 from django.db import models
 
 
-class DraftManager(models.Manager):
+class PublishedDraftManager(models.Manager):
     def get_queryset(self):
-        return super(DraftManager, self).get_queryset().filter(pub_date__lte=datetime.now())
+        return super(PublishedDraftManager, self).get_queryset().filter(pub_date__lte=datetime.now())
 
 
 class Draft(models.Model):

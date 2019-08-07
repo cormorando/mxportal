@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2>Articles</h1>
+</div>
+
+<ul>
+    {% for article in object_list %}
+    <li><a href="{% url 'article-detail' article.pk %}">{{ article.title }}</a> - {{ article.pub_date|date }}</li>
+    {% empty %}
+    <li>No articles yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

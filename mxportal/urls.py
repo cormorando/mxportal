@@ -25,4 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('impersonate/', include('impersonate.urls')),
+    path('blogs/', include('blogs.urls')),
+    path('articles/', include('articles.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2>Entries</h1>
+</div>
+
+<ul>
+    {% for entry in object_list %}
+    <li><a href="{% url 'entry-detail' entry.pk %}">{{ entry.title }}</a> - {{ entry.pub_date|date }}</li>
+    {% empty %}
+    <li>No entries yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

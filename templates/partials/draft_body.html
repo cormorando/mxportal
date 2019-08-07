@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2>{{ object.title }}</h1>
+</div>
+
+<p>{{ object.body }}</p>
+<p>Created: {{ object.created }}</p>
+<p>Modified: {{ object.modified }}</p>
+<p>Published: {{ object.pub_date }}</p>
+<p>Comments count: {{ object.comments_count }}</p>
+
+<ul>
+    {% for comment in object.comments.all %}
+    <li>{{ comment.body }}</li>
+    {% empty %}
+    <li>No comments yet.</li>
+    {% endfor %}
+</ul>
