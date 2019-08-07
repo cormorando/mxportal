@@ -10,7 +10,7 @@
 
 <ul>
     {% for comment in object.comments.all %}
-    <li>{{ comment.body }}</li>
+    <li>{{ comment.body }} - {{ comment.created }}</li>
     {% empty %}
     <li>No comments yet.</li>
     {% endfor %}
