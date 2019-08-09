@@ -6,6 +6,8 @@ from django.views.generic.edit import FormMixin
 from blogs.models import Entry
 from comments.forms import CommentForm
 
+from blogs.tasks import increment_comments
+
 
 class EntryListView(LoginRequiredMixin, ListView):
 
@@ -43,5 +45,7 @@ class EntryDetailView(LoginRequiredMixin, FormMixin, DetailView):
         comment.content_object = self.object
         comment.body = form.cleaned_data['body']
         comment.save()
+
+        increment_comments.delay(self.object.pk)
 
         return super().form_valid(form)
