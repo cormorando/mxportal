@@ -36,7 +36,7 @@
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">mxportal</a>
         {% if user.is_authenticated %}
         <form class="w-100" action="/search" method="get">
-            <input class="form-control form-control-dark w-100" name="q" type="text" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-dark w-100" name="q" type="text" placeholder="Search" aria-label="Search" value="{{ query }}">
         </form>
         {% endif %}
         <ul class="navbar-nav px-3 flex-row">

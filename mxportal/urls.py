@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from mxportal import settings
-from mxportal.views import HomeView
+from mxportal.views import HomeView, HighlightedSearchView
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
@@ -27,5 +27,5 @@ urlpatterns = [
     path('impersonate/', include('impersonate.urls')),
     path('blogs/', include('blogs.urls')),
     path('articles/', include('articles.urls')),
-    path('search/', include('haystack.urls')),
+    path('search/', HighlightedSearchView.as_view(), name='search_view'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

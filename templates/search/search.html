@@ -6,13 +6,17 @@
     <h2>Search results</h1>
 </div>
 
-{% for result in page.object_list %}
-<div class="media text-muted pt-3">
-    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">{{ result.object.title }}</strong>
-        {{ result.object.body }}
-    </p>
-</div>
+{% for result in object_list %}
+<a class="nav-link p-0" href="#">
+    <div class="media text-muted pt-3">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">{{ result.object.title }}</strong>
+            {% load highlight %}
+            {% highlight result.object.body with query as highlighted_result %}
+            {{ highlighted_result|safe }}
+        </p>
+    </div>
+</a>
 {% empty %}
 <div class="media text-muted pt-3">
     <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
