@@ -8,3 +8,6 @@ class Article(Draft):
     objects = models.Manager()
     published = PublishedDraftManager()
     comments = GenericRelation(Comment, related_query_name='article')
+
+    def url(instance):
+        return '/articles/{}'.format(instance.pk)

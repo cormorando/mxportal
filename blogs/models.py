@@ -11,3 +11,6 @@ class Entry(Draft):
 
     class Meta:
         verbose_name_plural = 'entries'
+
+    def url(instance):
+        return '/blogs/{}'.format(instance.pk)
