@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2>Search results</h1>
+</div>
+
+{% for result in page.object_list %}
+<div class="media text-muted pt-3">
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">{{ result.object.title }}</strong>
+        {{ result.object.body }}
+    </p>
+</div>
+{% empty %}
+<div class="media text-muted pt-3">
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">No results found.</strong>
+    </p>
+</div>
+{% endfor %}
+
+{% endblock %}

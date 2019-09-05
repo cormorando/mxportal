@@ -27,4 +27,5 @@ urlpatterns = [
     path('impersonate/', include('impersonate.urls')),
     path('blogs/', include('blogs.urls')),
     path('articles/', include('articles.urls')),
+    path('search/', include('haystack.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
