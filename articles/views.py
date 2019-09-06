@@ -6,10 +6,17 @@ from django.views.generic.edit import FormMixin
 from articles.models import Article
 from comments.forms import CommentForm
 
+from articles.tasks import increment_comments
+
 
 class ArticleListView(LoginRequiredMixin, ListView):
 
     model = Article
+
+    def get_queryset(self):
+        queryset = Article.published.all()
+
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -43,5 +50,7 @@ class ArticleDetailView(LoginRequiredMixin, FormMixin, DetailView):
         comment.content_object = self.object
         comment.body = form.cleaned_data['body']
         comment.save()
+
+        increment_comments.delay(self.object.pk)
 
         return super().form_valid(form)

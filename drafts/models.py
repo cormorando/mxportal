@@ -13,10 +13,11 @@ class Draft(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     pub_date = models.DateTimeField(blank=True)
-    comments_count = models.PositiveIntegerField(default=0)
+    comments_count = models.PositiveIntegerField(default=0, editable=False)
 
     class Meta:
         abstract = True
+        ordering = ['-pub_date']
 
     def __str__(self):
         return self.title

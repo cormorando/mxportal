@@ -13,6 +13,11 @@ class EntryListView(LoginRequiredMixin, ListView):
 
     model = Entry
 
+    def get_queryset(self):
+        queryset = Entry.published.all()
+
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
