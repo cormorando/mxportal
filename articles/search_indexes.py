@@ -3,7 +3,7 @@ from haystack import indexes
 from articles.models import Article
 
 
-class EntryIndex(indexes.SearchIndex, indexes.Indexable):
+class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
         text = indexes.EdgeNgramField(document=True, use_template=True)
         title = indexes.CharField(model_attr='title')
         body = indexes.CharField(model_attr='body')

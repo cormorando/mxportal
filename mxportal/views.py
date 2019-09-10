@@ -25,7 +25,7 @@ class HighlightedSearchView(SearchView):
     def autocomplete(request):
         if request.is_ajax():
             sqs = SearchQuerySet().autocomplete(text=request.GET.get('term', ''))[:5]
-            suggestions = [result.title if result.title else result.body for result in sqs]
+            suggestions = [result.title for result in sqs]
 
         data = json.dumps(suggestions or ['No suggestions'])
 
