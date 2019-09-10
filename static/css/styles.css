@@ -108,3 +108,11 @@ body {
 .highlighted {
     background: #ff0;
 }
+
+.ui-menu .ui-menu-item:first-of-type {
+    margin-top: 4px;
+}
+
+.ui-menu .ui-menu-item div {
+    padding: 10px;
+}

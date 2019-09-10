@@ -28,4 +28,5 @@ urlpatterns = [
     path('blogs/', include('blogs.urls')),
     path('articles/', include('articles.urls')),
     path('search/', HighlightedSearchView.as_view(), name='search_view'),
+    path('autocomplete/', HighlightedSearchView.autocomplete, name='autocomplete'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
