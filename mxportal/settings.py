@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Third-party
     'suit',
+    'compressor',
     'impersonate',
 
     # Default
@@ -146,6 +147,9 @@ STATIC_ROOT = ''
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+STATICFILES_FINDERS = (
+    'compressor.finders.CompressorFinder',
+)
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -207,3 +211,6 @@ HAYSTACK_CONNECTIONS = {
 }
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+
+COMPRESS_ENABLED = True
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
