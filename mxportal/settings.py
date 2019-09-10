@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # Third-party
-    # 'suit',
+    'suit',
     'impersonate',
 
     # Default
