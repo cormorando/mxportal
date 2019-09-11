@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.twitter',
 
     'haystack',
+    'debug_toolbar',
 
     # Local
     'articles',
@@ -73,6 +74,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'impersonate.middleware.ImpersonateMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'mxportal.urls'
@@ -218,3 +220,10 @@ HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 
 COMPRESS_ENABLED = True
 COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_COLLAPSED': True,
+}
