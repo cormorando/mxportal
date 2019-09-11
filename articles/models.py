@@ -1,5 +1,6 @@
 from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
+from django.urls import reverse
 from drafts.models import Draft, PublishedDraftManager
 from comments.models import Comment
 
@@ -9,5 +10,5 @@ class Article(Draft):
     published = PublishedDraftManager()
     comments = GenericRelation(Comment, related_query_name='article')
 
-    def url(instance):
-        return '/articles/{}'.format(instance.pk)
+    def get_absolute_url(self):
+        return reverse('article-detail', args=[str(self.id)])

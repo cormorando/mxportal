@@ -1,5 +1,6 @@
 from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
+from django.urls import reverse
 from drafts.models import Draft, PublishedDraftManager
 from comments.models import Comment
 
@@ -12,5 +13,5 @@ class Entry(Draft):
     class Meta:
         verbose_name_plural = 'entries'
 
-    def url(instance):
-        return '/blogs/{}'.format(instance.pk)
+    def get_absolute_url(self):
+        return reverse('entry-detail', args=[str(self.id)])
