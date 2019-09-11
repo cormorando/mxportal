@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'suit',
     'compressor',
     'impersonate',
+    'widget_tweaks',
 
     # Default
     'django.contrib.admin',
@@ -162,7 +163,8 @@ SITE_ID = 1
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_LOGOUT_ON_GET = True
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
 SOCIALACCOUNT_QUERY_EMAIL = True
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

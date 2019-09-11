@@ -2,23 +2,9 @@
 
 {% block body %}
 
-{% load socialaccount %}
-{% providers_media_js %}
-
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h2>Home</h1>
 </div>
-{% if user.is_authenticated %}
 <p>Welcome {{ user.username }}</p>
-{% else %}
-<a href="{% provider_login_url 'facebook' %}" class="btn btn-outline-primary">
-    <span class="fa fa-facebook"></span>
-    Sign in with Facebook
-</a>
-<a href="{% provider_login_url 'twitter' %}" class="btn btn-outline-primary">
-    <span class="fa fa-twitter"></span>
-    Sign in with Twitter
-</a>
-{% endif %}
 
 {% endblock %}

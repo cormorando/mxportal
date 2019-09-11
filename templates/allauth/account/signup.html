@@ -1,21 +1,69 @@
-{% extends "account/base.html" %}
+{% extends 'account/base.html' %}
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans 'Signup' %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+<h1>{% trans 'Sign Up' %}</h1>
 
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="fixed-top">
+        {% for error in form.non_field_errors %}
+        <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+            {{ error|escape }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% for error in form.username.errors %}
+        <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+            {{ error|escape }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% for error in form.email.errors %}
+        <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+            {{ error|escape }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% for error in form.password1.errors %}
+        <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+            {{ error|escape }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% for error in form.password2.errors %}
+        <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
+            {{ error|escape }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% load widget_tweaks %}
+    {% render_field form.username class+="form-control" %}
+    {% render_field form.email class+="form-control" placeholder+="(optional)" %}
+    {% render_field form.password1 class+="form-control" %}
+    {% render_field form.password2 class+="form-control" %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button class="btn btn-lg btn-primary btn-block" type="submit">{% trans 'Sign Up' %}</button>
 </form>
 
 {% endblock %}

@@ -1,16 +1,17 @@
 import json
 from django.views.generic import TemplateView
 from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 from haystack.generic_views import SearchView
 from haystack.forms import SearchForm
 from haystack.query import SearchQuerySet
 
 
-class HomeView(TemplateView):
+class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'home.html'
 
 
-class HighlightedSearchView(SearchView):
+class HighlightedSearchView(LoginRequiredMixin, SearchView):
 
     def get_queryset(self):
         queryset = super(HighlightedSearchView, self).get_queryset()
