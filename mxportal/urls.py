@@ -28,6 +28,8 @@ urlpatterns = [
     path('impersonate/', include('impersonate.urls')),
     path('blogs/', include('blogs.urls')),
     path('articles/', include('articles.urls')),
+    path('products/', include('products.urls')),
+    path('cart/', include('cart.urls')),
     path('search/', HighlightedSearchView.as_view(), name='search_view'),
     path('autocomplete/', HighlightedSearchView.autocomplete, name='autocomplete'),
     path('__debug__/', include(debug_toolbar.urls)),

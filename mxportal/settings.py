@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     # Local
     'articles',
     'blogs',
-    'carts',
+    'cart',
     'comments',
     'drafts',
     'products',
@@ -227,3 +227,5 @@ INTERNAL_IPS = [
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_COLLAPSED': True,
 }
+
+CART_SESSION_ID = 'cart'

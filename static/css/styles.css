@@ -116,3 +116,7 @@ body {
 .ui-menu .ui-menu-item div {
     padding: 10px;
 }
+
+a.fa:hover {
+    text-decoration: none;
+}
