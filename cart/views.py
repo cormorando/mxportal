@@ -38,7 +38,7 @@ def cart_order(request):
         context={'products': cart.cart, 'total': cart.get_total_price, 'count': cart.__len__},
         to_emails=[request.POST.get('email', '')]
     )
-    messages.success(request, 'Order submitted. Place check your email.')
+    messages.success(request, 'Order submitted. Please check your email.')
     cart.delete_cart()
 
     return redirect('product-list')
