@@ -1,0 +1,7 @@
+<h4>Your cart ({{ count }}):</h4>
+<ul>
+    {% for product in products.values %}
+    <li>{{ product.name }} ({{ product.quantity }} x ${{ product.price }})</li>
+    {% endfor %}
+    <li>Total (USD): ${{ total }}</li>
+</ul>

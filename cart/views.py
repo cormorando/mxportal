@@ -5,6 +5,7 @@ from django.contrib import messages
 from products.models import Product
 from cart.cart import Cart
 from cart.forms import AddProductForm
+from mxportal.mailer import Mailer
 
 
 @require_POST
@@ -30,7 +31,13 @@ def cart_remove(request, pk):
 @require_POST
 def cart_order(request):
     cart = Cart(request)
-    # send email
+    mailer = Mailer(from_email='mxportal@example.com')
+    mailer.send_messages(
+        subject='Order confirmation',
+        template='emails/order_confirmation.html',
+        context={'products': cart.cart, 'total': cart.get_total_price, 'count': cart.__len__},
+        to_emails=[request.POST.get('email', '')]
+    )
     messages.success(request, 'Order submitted. Place check your email.')
     cart.delete_cart()
 

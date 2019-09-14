@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'compressor',
     'impersonate',
     'widget_tweaks',
+    'djcelery_email',
 
     # Default
     'django.contrib.admin',
@@ -229,3 +230,7 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 
 CART_SESSION_ID = 'cart'
+
+EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '1025'
