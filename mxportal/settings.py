@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'impersonate',
     'widget_tweaks',
     'djcelery_email',
+    'meta',
 
     # Default
     'django.contrib.admin',
@@ -234,3 +235,6 @@ CART_SESSION_ID = 'cart'
 EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = '1025'
+
+META_SITE_PROTOCOL = 'http'
+META_USE_SITES = True

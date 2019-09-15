@@ -31,6 +31,7 @@ class ArticleDetailView(LoginRequiredMixin, FormMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['meta'] = self.get_object().as_meta(self.request)
 
         return context
 
